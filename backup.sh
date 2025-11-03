@@ -50,7 +50,8 @@ echo "✅ Backup file created: $BACKUP_FILE"
 # ───────────────────────────────
 echo "📤 Sending to Telegram..."
 
-CAPTION="🗄 Database Backup%0A%0A📌 Project: ${PROJECT_NAME}%0A📅 Date: ${DATE}"
+# Use real newlines for Telegram caption
+CAPTION=$'🗄 Database Backup\n\n📌 Project: '"${PROJECT_NAME}"$'\n📅 Date: '"${DATE}"
 
 curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendDocument" \
   -F chat_id="${CHAT_ID}" \
